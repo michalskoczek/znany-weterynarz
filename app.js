@@ -25,6 +25,21 @@ app.use('/vets', vetsRoute);
 app.use('/register', registerRoute);
 app.use('/login', loginRoute);
 
+app.use((req, res, nex) => {
+  const error = new Error('Not found');
+  error.status = 404;
+  next(error);
+});
+
+app.use((next, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
+
 app.listen(3000, () => {
   console.log('Server is running');
 });
