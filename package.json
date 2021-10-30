@@ -4,7 +4,7 @@
   "description": "Website where you can find your the best vet",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "start": "nodemon app.js"
   },
   "author": "Michał Skoczek",
   "license": "ISC",
