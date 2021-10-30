@@ -1,3 +1,3 @@
 exports.getHomepage = (req, res, next) => {
-  res.send('Hello Homepage');
+  res.json({ title: 'Hello homepage' });
 };
