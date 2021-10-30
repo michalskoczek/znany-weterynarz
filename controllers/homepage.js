@@ -1,3 +1,3 @@
 exports.getHomepage = (req, res, next) => {
-  res.json({ title: 'Hello homepage' });
+  res.status(200).json({ title: 'Hello homepage' });
 };
