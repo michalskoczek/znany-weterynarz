@@ -4,10 +4,11 @@ const homepageRoute = require('./routes/homepage');
 const vetsRoute = require('./routes/vets');
 const registerRoute = require('./routes/register');
 const loginRoute = require('./routes/login');
+const { errorGenerator, errorHandler } = require('./middlewares/error');
 
 const app = express();
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use((req, res, next) => {
