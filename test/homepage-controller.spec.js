@@ -1,12 +1,12 @@
 const app = require('../app');
 const chai = require('chai');
-const expect = require('chai').expect;
 const chaiHttp = require('chai-http');
 
+const expect = chai.expect;
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe('Homepage route', () => {
+describe('GET homepage', () => {
   it('should return homepage with statusCode 200', (done) => {
     chai
       .request(app)
