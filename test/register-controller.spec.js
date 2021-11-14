@@ -1,30 +1,29 @@
 const app = require('../app');
 const chai = require('chai');
-const expect = require('chai').expect;
 const chaiHttp = require('chai-http');
 
+const expect = chai.expect;
 const should = chai.should();
 chai.use(chaiHttp);
 
-describe('Homepage route', () => {
-  it('should return homepage with statusCode 200', (done) => {
+describe('GET /register', () => {
+  it('should return statusCode 200', (done) => {
     chai
       .request(app)
-      .get('/')
-      .end((error, res) => {
+      .get('/register')
+      .end((err, res) => {
         expect(res).to.have.status(200);
         done();
       });
   });
 
-  it('should return title: Hello homepage', (done) => {
+  it('should return title - Register page', (done) => {
     chai
       .request(app)
-      .get('/')
+      .get('/register')
       .end((err, res) => {
-        expect(res).to.have.status(200);
         res.body.should.be.a('object');
-        expect(res.body.title).to.equal('Hello homepage');
+        expect(res.body.title).to.equal('Register page');
         done();
       });
   });
