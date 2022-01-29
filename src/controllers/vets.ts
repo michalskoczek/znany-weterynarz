@@ -1,4 +1,6 @@
-exports.getVets = (req, res, next) => {
+import { NextFunction, Request, Response } from 'express';
+
+export const getVets = (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({
     vets: [
       { id: 1, name: 'Yoga Vet', address: 'Warszawa' },
@@ -7,8 +9,8 @@ exports.getVets = (req, res, next) => {
   });
 };
 
-exports.getVet = (req, res, next) => {
-  const id = req.params.id;
+export const getVet = (req: Request, res: Response, next: NextFunction) => {
+  const id: string = req.params.id;
   if (!id) {
     throw new Error('This vet does not exist');
   } else {
@@ -20,14 +22,18 @@ exports.getVet = (req, res, next) => {
   }
 };
 
-exports.getVisit = (req, res, next) => {
+export const getVisit = (req: Request, res: Response, next: NextFunction) => {
   res.status(200).json({
     title: 'Visit calendar',
     vet: { id: 1, name: 'Yoga Vet', address: 'Warszawa' },
   });
 };
 
-exports.postBookingVisit = (req, res, next) => {
+export const postBookingVisit = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
   const day = req.body.day;
   const time = req.body.time;
   const date = req.body.date;

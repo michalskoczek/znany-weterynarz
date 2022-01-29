@@ -1,21 +1,21 @@
-const express = require('express');
+import express, { Application, NextFunction, Request, Response } from 'express';
 
-const homepageRoute = require('./routes/homepage');
-const vetsRoute = require('./routes/vets');
-const registerRoute = require('./routes/register');
-const loginRoute = require('./routes/login');
-const { errorGenerator, errorHandler } = require('./middlewares/error');
+import homepageRoute from './routes/homepage.js';
+import vetsRoute from './routes/vets.js';
+import registerRoute from './routes/register.js';
+import loginRoute from './routes/login.js';
+import { errorGenerator, errorHandler } from './middlewares/error.js';
 
-const app = express();
+const app: Application = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
     'Access-Control-Allow-Methods',
-    'GET, POST, PUT, PATCH, DELETE',
+    'GET, POST, PUT, PATCH, DELETE'
   );
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   next();
@@ -33,4 +33,4 @@ app.listen(3000, () => {
   console.log('Server is running');
 });
 
-module.exports = app;
+export default app;
